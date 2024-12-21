@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chord Builder</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: space-between;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        #controls {
+            width: 900px;
+            padding: 20px;
+            overflow-y: auto;
+            background-color: #f4f4f4;
+            height: 100%;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        #chord-display {
+            flex-grow: 1;
+            padding: 20px;
+            background-color: #fff;
+            font-size: 3em;
+            text-align: center;
+            margin-left: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .category {
+            margin: 15px 0;
+        }
+
+        button {
+            padding: 10px 15px;
+            margin: 5px;
+            cursor: pointer;
+        }
+
+        h1 {
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="controls">
+        <h1>Chord Builder</h1>
+        <!-- Tonic -->
+        <div class="category">
+            <h2>Tonic</h2>
+            <button onclick="selectOption('tonic', 'C')">C</button>
+            <button onclick="selectOption('tonic', 'C#')">C#</button>
+            <button onclick="selectOption('tonic', 'D')">D</button>
+            <button onclick="selectOption('tonic', 'D#')">D#</button>
+            <button onclick="selectOption('tonic', 'E')">E</button>
+            <button onclick="selectOption('tonic', 'F')">F</button>
+            <button onclick="selectOption('tonic', 'F#')">F#</button>
+            <button onclick="selectOption('tonic', 'G')">G</button>
+            <button onclick="selectOption('tonic', 'G#')">G#</button>
+            <button onclick="selectOption('tonic', 'A')">A</button>
+            <button onclick="selectOption('tonic', 'A#')">A#</button>
+            <button onclick="selectOption('tonic', 'B')">B</button>
+            <!-- Randomize button -->
+            <button onclick="randomizeCategory('tonic')">Randomize Tonic</button>
+        </div>
+
+        <!-- Triad -->
+        <div class="category">
+            <h2>Triad Quality</h2>
+            <button onclick="selectOption('triad', 'sus2')">sus2</button>
+            <button onclick="selectOption('triad', 'b3')">b3</button>
+            <button onclick="selectOption('triad', '3')">3</button>
+            <button onclick="selectOption('triad', 'sus4')">sus4</button>
+            <button onclick="selectOption('triad', 'sus#4')">sus#4</button>
+            <!-- None button -->
+            <button onclick="selectOption('triad', 'none')">None</button>
+            <!-- Randomize button -->
+            <button onclick="randomizeCategory('triad')">Randomize Triad</button>
+        </div>
+
+        <!-- Fifth -->
+        <div class="category">
+            <h2>Fifth Quality</h2>
+            <button onclick="selectOption('fifth', '5')">Perfect 5</button>
+            <button onclick="selectOption('fifth', 'b5')">b5</button>
+            <button onclick="selectOption('fifth', '#5')">#5</button>
+            <!-- None button -->
+            <button onclick="selectOption('fifth', 'none')">None</button>
+            <!-- Randomize button -->
+            <button onclick="randomizeCategory('fifth')">Randomize Fifth</button>
+        </div>
+
+        <!-- Tetrad -->
+        <div class="category">
+            <h2>Tetrad Quality</h2>
+            <button onclick="selectOption('tetrad', 'b7')">b7</button>
+            <button onclick="selectOption('tetrad', 'maj7')">maj7</button>
+            <!-- None button -->
+            <button onclick="selectOption('tetrad', 'none')">None</button>
+            <!-- Randomize button -->
+            <button onclick="randomizeCategory('tetrad')">Randomize Tetrad</button>
+        </div>
+
+        <!-- Extensions -->
+        <div class="category">
+            <h2>Extensions</h2>
+            <h3>Ninth</h3>
+            <button onclick="selectOption('ninth', 'b9')">b9</button>
+            <button onclick="selectOption('ninth', '9')">9</button>
+            <button onclick="selectOption('ninth', '#9')">#9</button>
+            <button onclick="selectOption('ninth', 'none')">None</button>
+            <button onclick="randomizeCategory('ninth')">Randomize Ninth</button>
+
+            <h3>Fourth</h3>
+            <button onclick="selectOption('fourth', '11')">11</button>
+            <button onclick="selectOption('fourth', '#11')">#11</button>
+            <button onclick="selectOption('fourth', 'none')">None</button>
+            <button onclick="randomizeCategory('fourth')">Randomize Fourth</button>
+
+            <h3>Sixth</h3>
+            <button onclick="selectOption('sixth', '13')">13</button>
+            <button onclick="selectOption('sixth', 'b13')">b13</button>
+            <button onclick="selectOption('sixth', 'none')">None</button>
+            <button onclick="randomizeCategory('sixth')">Randomize Sixth</button>
+        </div>
+
+        <!-- Buttons -->
+        <button onclick="generateRandomChord()">Generate Random Chord</button>
+        <button onclick="resetChord()">Reset</button>
+    </div>
+
+    <!-- Chord display moved to the right with fixed size -->
+    <div id="chord-display">Your Chord: </div>
+
+    <!-- Load the JavaScript file after the HTML content -->
+    <script src="script.js"></script>
+</body>
+</html>
